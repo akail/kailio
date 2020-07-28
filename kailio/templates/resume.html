@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% from 'macros.html' import prof_exp_header %}
+
+{%block banner_content %}
+Resume
+{%endblock banner_content %}
+{% block content %}
+
+<style>
+h2 {
+    padding-top: 2rem;
+}
+.education-row {
+    padding-top: 1rem;
+}
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Professional Experience</h2>
+        {{prof_exp_header('Data in Science Technologies',
+        'HPC Advisory Scientific Engineer',
+        'June 2020',
+        'Present',
+        None,
+        'Aiken, SC'
+        )}}
+
+        {{prof_exp_header('Savannah River National Laboratory',
+        'Senior Scientist',
+        'Dec 2013',
+        'June 2020',
+        'Integrated Computing',
+        'Aiken, SC'
+        )}}
+
+        <ul>
+            <li>Re-implemented legacy infrastructure management system using modern technology stack</li>
+            <li>Improved the reliability and efficiency in quality assurance of locally collected atmospheric data</li>
+            <li>Oversaw the writing and implementation of cyber security baselines</li>
+            <li>Developed application development pipeline to reduce mean time to application deployment</li>
+            <li>Managed a team in development of an on-boarding protocol for an inter-laboratory working group</li>
+            <li>Acted as subject matter expert for new forays into data analytics and machine learning</li>
+            <li>Centralized code repositories in the Phabricator code development platform</li>
+        </ul>
+        {{prof_exp_header('Joint Institue for Computational Sciences',
+        'Graduate Research Assistant',
+        'Sep 2011',
+        'Dec 2020',
+        None,
+        'Knoxville, TN'
+        )}}
+        <ul>
+            <li>Developed incompressible Navier-Stokes solver and utilities for the multiphysics package OpenDIEL</li>
+            <li>Designed and developed highly parallelized software to run on large-scale supercomputers</li>
+            <li>Built CAD models and grids for Finite Element Analysis applications</li>
+            <li>Mentored and instructed undergraduate students in the use of HPC systems for a summer research program</li>
+        </ul>
+
+        <h2>Education</h2>
+
+        <div class="row justify-content-between education-row">
+            <div class="col-md-6">
+                <h3>Doctor of Philosophy in Information Science</h3>
+            </div>
+            <div class="col-md-4">
+                <p class="right-date">Current</p>
+            </div>
+        </div>
+        <p>University of Arkansas Little Rock, Little Rock, AR</p>
+
+        <div class="row justify-content-between education-row">
+            <div class="col-md-6">
+                <h3>Master of Science in Aerospace Engineering</h3>
+            </div>
+            <div class="col-md-4">
+                <p class="right-date">Aug 2013</p>
+            </div>
+        </div>
+        <p>University of Tennessee	Knoxville, TN</p>
+
+        <div class="row justify-content-between education-row">
+            <div class="col-md-6">
+                <h3>Bachelor of Science in Aerospace Engineering</h3>
+            </div>
+            <div class="col-md-4">
+                <p class="right-date">May 2011</p>
+            </div>
+        </div>
+        <p>University of Tennessee	Knoxville, TN</p>
+
+        <h2>Technical Competencies</h2>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p><b>Languages:</b>
+                Python, Bash, Javascript, C/C++, Fortran</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p><b>Operating Systems:</b>
+                Red Hat Enterprise Linux, Debian Linux, Arch Linux
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p><b>Technologies:</b>
+                Machine Learning, Docker, Saltstack
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p><b>Applications:</b>
+                PostgreSQL, MySQL, Git, Apache, Mercurial, MOAB, Subversion, Nginx<paste>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p><b>Methodologies:</b>
+                Numerical Analysis, Finite Element Analysis
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p><b>Certifications:</b>
+                Applied Data Science with Python
+                </p>
+            </div>
+        </div>
+
+
+        <h2>Publications</h2>
+        <ul>
+            <li>“Interoperable Executive Library for the Simulation of Biomedical Processes.” Journal of Computational and Applied Mathematics, Volume 270, November 2014</li>
+            <li>“Solving a Large Scale Thermal Radiation Problem Using an Interoperable Executive Library Framework on Petascale Supercomputers.” AMMCS-2013 Proceedings, September 2013</li>
+        </ul>
+        <h2>Presentations</h2>
+        <ul>
+            <li>Presenter, “SRNL Scientific Computing: Built on Python” Symposium on Research Computing Infrastructure, Spring 2017</li>
+            <li>Presenter, “Integrated Asset and Resource Management at SRNL Scientific Computing” National Laboratory Information Technology Summit 2016</li>
+            <li>Presenter, “Automated Quality Assurance of Atmospheric Data” National Laboratory Information Technology Summit 2015</li>
+        </ul>
+        <h2>Professional Societies</h2>
+        <ul>
+            <li>ACM</li>
+            <!--<li>IEEE</li>-->
+        </ul>
+
+        <h2>Volunteer Work</h2>
+        <ul>
+            <li>Ministry Leader of events at Aiken Church of Christ</li>
+            <li>Lead Counselor, Camp Sweet Life</li>
+        </ul>
+    </div>
+</div>
+{% endblock content %}

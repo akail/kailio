@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block banner_content %}Blog Articles{% endblock %}
+{% block styles %}
+    {{ super()}}
+    <link rel="stylesheet" href="/static/css/blog/posts.css"/>
+{% endblock styles %}
+{% block content %}
+    <div class="blog-post">
+        <h2 class="blog-post-title">{{post.title}}</h2>
+        <p class="blog-post-meta">{{moment(post.published_at).format('MMMM Do, YYYY')}} by
+        <a href="#">{{post.author.first_name}}</a>
+        </p>
+        {{post.content|safe}}
+
+    </div>
+{% endblock content %}

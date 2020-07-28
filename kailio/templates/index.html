@@ -1,4 +1,76 @@
 {% extends "base.html" %}
+{% from 'macros.html' import blog_card with context %}
+        {% block styles %}
+            {{ super()}}
+            <link rel="stylesheet" href="/static/css/index.css"/>
+        {% endblock styles %}
 {% block content %}
-hello
+        <div class="row">
+            <div class="col-md-12">
+                <img src="/static/img/Andrew2018_500x500.png" alt="Its a me!" class="rounded-circle mx-auto d-block" id="index-portrait" width="400">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="padding-top: 30px;">
+                <p>
+                Andrew Kail is an HPC Advisory Scientific Engineer at <a href="datainscience.com">Data in Science Technologies</a>
+                deploying and managing High Performance Computing systems, and leads the development of machine learning
+                initiatives at DST.  He was previously the scientific application development lead for the 
+                Integrated Computing group at <a href="https://srnl.doe.gov">Savannah River National Laboratory</a>. There he was also a data scientist,
+                full-stack developer and HPC systems administrator.
+                Before joining SRNL he was a graduate research assistant for the Joint Institute for
+                Computations Sciences (<a href="https://jics.utk.edu">JICS</a>) where he worked on the development of loosely-coupled
+                physics models designed to run at scale.
+                </p>
+            </div>
+        </div>
+
+        <hr class='style14'>
+        <br>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">Latest Posts</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                {{blog_card(posts[0])}}
+            </div>
+            <div class="col-md-4">
+                {{blog_card(posts[1])}}
+            </div>
+            <div class="col-md-4">
+                {{blog_card(posts[2])}}
+            </div>
+        </div>
+
+        <div class="row" style="padding-top:3em">
+            <div class="col-md-12">
+                <h2 class="text-center">Popular Posts</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                {{blog_card(posts[0])}}
+            </div>
+            <div class="col-md-4">
+                {{blog_card(posts[1])}}
+            </div>
+            <div class="col-md-4">
+                {{blog_card(posts[2])}}
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center" style="padding-top:3em; padding-bottom: 3m">
+            <div class="col-md-2">
+                <div class="card">
+                    <strong class="text-center">
+                        <a href="{{url_for('blog.index')}}">More</a>
+                    </strong>
+                </div>
+            </div>
+        </div>
 {% endblock content %}

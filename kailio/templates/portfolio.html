@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{%block banner_content %}
+Portfolio
+{%endblock banner_content %}
+{% block content %}
+
+    
+<style>
+.h2-row {
+    padding-bottom: 2rem;
+}
+h2 {
+    padding-bottom: 1rem;
+}
+</style>
+        <div class="h2-row row">
+            <h2>Projects</h2>
+
+            <div class="col-md-11 offset-md-1">
+
+                <!--Hauberk-->
+                <div class="row">
+                    <h3><a href="https://hauberk.readthedocs.io/en/latest/index.html">Hauberk</a></h3>
+                </div>
+                <div class="row">
+                    <p class="lead">
+                    An email automation framework written in Python.  Currently in Alpha status.
+                    </p>
+                </div>
+                <!--End Hauberk-->
+
+                <!--Prene-->
+                <div class="row">
+                    <h3><a href="#">PRENE</a></h3>
+                </div>
+                <div class="row">
+                    <p class="lead">
+                    Personalized Reddit Newsletter
+                    </p>
+                </div>
+                <!--End Prene-->
+                <!--Prene-->
+                <div class="row">
+                    <h3><a href="https://github.com/akail/cosmos_scraper">Web Scraper</a></h3>
+                </div>
+                <div class="row">
+                    <p class="lead">
+                        Flexible web scraper built using scrapy.
+                    </p>
+                </div>
+                <!--End Prene-->
+            </div>
+        </div>
+
+
+        <div class="h2-row row">
+            <h2>Scripts</h2>
+            <div class="col-md-11 offset-md-1">
+                <!--Scanning-->
+                <div class="row">
+                    <h3><a href="https://github.com/akail/pdfscanner">PDF Scanner</a></h3>
+                </div>
+                <div class="row">
+                    <p class="lead">
+                    This Python script uses the SANE libraries on Linux to scan documents from flatbed scanner
+                    and then will convert the document to a PDF.  It will coallate multiple pages together and
+                    post process with OCR using Tesseract.
+                    </p>
+                </div>
+                <!--End Scanning-->
+            </div>
+        </div>
+
+
+        <div class="h2-row row">
+            <h2>Utilities</h2>
+            <div class="col-md-11 offset-md-1">
+                <!--Health Insurance Calculator-->
+                <div class="row">
+                    <h3><a href="/extra/healthinsurancecomparison.ods">Health Insurance Comparison</a></h3>
+                </div>
+                <div class="row">
+                    <p class="lead">
+                    A spreadsheet that can be used to compare Health Insurance plans.  I wrote this when I needed to make
+                    a decision between my Wife and I's different health plans.  Includes the option to include HSA seed money and is focused
+                    on In-Network expenses.
+                    </p>
+                </div>
+                <!--End Health Insurance Calculator-->
+            </div>
+        </div>
+
+
+        <div class="h2-row row">
+            <h2>Managed Websites</h2>
+            <div class="col-md-11 offset-md-1">
+                <!--SCAS-->
+                <div class="row">
+                    <h3><a href="https://scacademysci.org">South Carolina Academy of Sciences</a></h3>
+                </div>
+                <!--End SCAS-->
+
+                <!--Aiken Church-->
+                <div class="row">
+                    <h3><a href="https://aiken.church">Aiken Church of Christ</a></h3>
+                </div>
+                <!--End Aiken Church-->
+            </div>
+        </div>
+
+        <div class="h2-row row">
+            <h2>Other</h2>
+            <div class="col-md-11 offset-md-1">
+                
+                <!--Personal configs-->
+                <div class="row">
+                    <h3><a href="#">Config Files</a></h3>
+                </div>
+                <div class="row">
+                    <p class="lead">
+                    Personal linux configs for bash, vim, nvim, tmux, and tmuxp.
+                    </p>
+                </div>
+                <!--End Personal configs-->
+
+                <!--Homeassistant Configs-->
+                <div class="row">
+                    <h3><a href="#">Home-Assistant</a></h3>
+                </div>
+                <div class="row">
+                    <p class="lead">
+                        Personal Configuration files for the <a href="https://www.home-assistant.io/">Home-Assistant</a> home automation platform.
+                    </p>
+                </div>
+                <!--End Homeassistant Configs-->
+
+                
+            </div>
+        </div>
+
+    
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}

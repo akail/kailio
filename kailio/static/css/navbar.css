@@ -1,0 +1,24 @@
+.navbar {
+    background-color: #fefefe !important;
+    transition: background-color 2s ease 0s !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,.4);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.4);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.4);
+}
+/*.navbar.opaque {*/
+    /*[>background-color: rgba(88,89,91,1) !important ;<]*/
+    /*background-color: #999 !important;*/
+    /*transition: background-color 2s ease 0s !important;*/
+/*}*/
+
+.navbar > a.nav-link {
+    color: black !important;
+    /*text-shadow: -1px 0 black;, 0 1px black;, 1px 0 black;, 0 -1px black;;*/
+    text-shadow: 0px 0px 1px gray;
+    font-size: large;
+}
+
+.navbar-brand {
+    color: gray !important;
+
+}
