@@ -40,3 +40,6 @@ factory_boy = "^2.12.0"
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
+
+[tool.bandit]
+pytest_filter = "*_test.py"

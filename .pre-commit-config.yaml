@@ -10,7 +10,6 @@ repos:
       - id: check-added-large-files
       - id: check-json
       - id: check-toml
-      - id: detect-aws-credentials
       - id: detect-private-key
       - id: name-tests-test
       - id: debug-statements
@@ -28,5 +27,3 @@ repos:
     sha: v1.1.0
     hooks:
     - id: python-safety-dependencies-check
-
-

@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 
 from kailio import db
 from kailio.factories import UserFactory, PageFactory, PostFactory
 
-def register_cli(app):
 
-    @app.cli.command('fakeit')
+def register_cli(app):
+    @app.cli.command("fakeit")
     def gen_fake_data():
         """Generate fake data for testing purposes."""
 

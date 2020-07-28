@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
 from flask import render_template
 from kailio.blog import blog
+
 
 @blog.app_errorhandler(500)
 def internal_server_error(e):

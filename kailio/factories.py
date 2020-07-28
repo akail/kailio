@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import datetime
 import random
 
@@ -9,16 +10,17 @@ from kailio.model import Page, Post, User, Role
 
 fake = Faker()
 
+
 class UserFactory(factory.alchemy.SQLAlchemyModelFactory):
     class Meta:
         model = User
         sqlalchemy_session = db.session
 
-    email = factory.Faker('email')
-    password = factory.Faker('password')
-    username = factory.Faker('user_name')
-    first_name = factory.Faker('first_name')
-    last_name = factory.Faker('last_name')
+    email = factory.Faker("email")
+    password = factory.Faker("password")
+    username = factory.Faker("user_name")
+    first_name = factory.Faker("first_name")
+    last_name = factory.Faker("last_name")
     active = True
 
     @factory.post_generation
@@ -34,9 +36,9 @@ class PageFactory(factory.alchemy.SQLAlchemyModelFactory):
         model = Page
         sqlalchemy_session = db.session
 
-    title = factory.Faker('sentence', nb_words=4)
-    content = factory.LazyAttribute(lambda p: ' '.join(fake.paragraphs(nb=3)))
-    summary = factory.LazyAttribute(lambda p: ' '.join(fake.paragraphs(nb=1)))
+    title = factory.Faker("sentence", nb_words=4)
+    content = factory.LazyAttribute(lambda p: " ".join(fake.paragraphs(nb=3)))
+    summary = factory.LazyAttribute(lambda p: " ".join(fake.paragraphs(nb=1)))
 
     published = True
     created_at = factory.LazyFunction(datetime.datetime.now)
@@ -47,16 +49,15 @@ class PageFactory(factory.alchemy.SQLAlchemyModelFactory):
     def slug(obj, create, extracted, **kwargs):
         if not create:
             return
-        obj.slug = extracted or obj.title.lower().replace(' ', '_').replace('.', '')
+        obj.slug = extracted or obj.title.lower().replace(" ", "_").replace(".", "")
 
     @factory.post_generation
     def author(obj, create, extracted, **kwargs):
         if not create:
             return
 
-        obj.author = random.choice(User.query.all())
-        
-        
+        obj.author = random.choice(User.query.all())  # nosec
+
 
 class PostFactory(PageFactory):
     class Meta:
