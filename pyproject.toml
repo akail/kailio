@@ -21,6 +21,9 @@ flask-ckeditor = "^0.4.4"
 flask-shell-ipython = "^0.4.1"
 flask-moment = "^0.10.0"
 bcrypt = "^3.1.7"
+webargs = "^6.1.0"
+Flask-Reuploaded = "^0.3.2"
+pillow = "^7.2.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -37,9 +40,9 @@ pytest-coverage = "^0.0"
 safety = "^1.9.0"
 factory_boy = "^2.12.0"
 
+[tool.bandit]
+pytest_filter = "*_test.py"
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
 
-[tool.bandit]
-pytest_filter = "*_test.py"

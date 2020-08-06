@@ -11,7 +11,8 @@ def index():
     """"""
 
     latest_posts = Post.query.order_by(Post.published_at.desc()).limit(3).all()
-    return render_template("index.html", posts=latest_posts)
+    popular_posts = Post.query.order_by(Post.hits.desc()).limit(3).all()
+    return render_template("index.html", latest_posts=latest_posts, popular_posts=popular_posts)
 
 
 @main.route("/resume")

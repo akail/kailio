@@ -11,6 +11,7 @@ from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_security import Security, SQLAlchemyUserDatastore
 from flask_migrate import Migrate
+from flask_uploads import UploadSet, IMAGES, configure_uploads, patch_request_class
 
 
 bootstrap = Bootstrap()
@@ -20,6 +21,7 @@ migrate = Migrate()
 admin = Admin(name="kailio", template_mode="bootstrap3")
 ckeditor = CKEditor()
 moment = Moment()
+images = UploadSet('images', IMAGES)
 
 
 def create_app():
@@ -34,6 +36,8 @@ def create_app():
     admin.init_app(app)
     ckeditor.init_app(app)
     moment.init_app(app)
+    configure_uploads(app, (images))
+    patch_request_class(app, 16*1024*1024)
 
     from kailio.model import User, Role
 
@@ -79,7 +83,8 @@ def create_app():
     @app.shell_context_processor
     def make_shell_context():
         return dict(
-            db=db, User=model.User, Role=model.Role, Page=model.Page, Post=model.Post
+            db=db, User=model.User, Role=model.Role, Page=model.Page, Post=model.Post, Image=model.Image
         )
+
 
     return app

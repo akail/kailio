@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 import datetime
+import os
 
 from flask_security import RoleMixin, UserMixin
+from sqlalchemy import event
 
-from kailio import db
+from kailio import db, images
 
 roles_users = db.Table(
     "roles_users",
@@ -66,11 +68,12 @@ class Page(db.Model):
     updated_at = db.Column(db.DateTime(), onupdate=datetime.datetime.utcnow)
     published_at = db.Column(db.DateTime())
     content = db.Column(db.String())
-
+    hits = db.Column(db.Integer, default=0)
     author = db.relationship("User", backref=db.backref("pages", lazy="dynamic"))
     tags = db.relationship(
         "Tag", secondary=tags_pages, backref=db.backref("pages", lazy="dynamic")
     )
+    comments_enabled = db.Column(db.Boolean(), default=True)
 
     __mapper_args__ = {"polymorphic_on": type, "polymorphic_identity": "page"}
 
@@ -90,3 +93,34 @@ class Tag(db.Model):
 
     def __repr__(self):
         return f"{self.name}"
+
+
+class Image(db.Model):
+    __tablename__ = 'images'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True, nullable=False)
+    filename = db.Column(db.String(128), unique=True)
+
+    def __repr__(self):
+        return self.name
+
+    @property
+    def url(self):
+        return images.url(self.filename)
+
+    @property
+    def filepath(self):
+        if self.filename is None:
+            return
+        return images.path(self.filename)
+
+    from sqlalchemy import event
+
+
+@event.listens_for(Image, 'after_delete')
+def del_image(mapper, connection, target):
+    if target.filepath is not None:
+        try:
+            os.remove(target.filepath)
+        except OSError:
+            pass

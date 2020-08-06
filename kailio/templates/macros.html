@@ -43,3 +43,17 @@
 
 
 {%- endmacro %}
+
+{%- macro comments(page) %}
+{% if page.comments_enabled %}
+<div id="hyvor-talk-view"></div>
+<script type="text/javascript">
+    var HYVOR_TALK_WEBSITE = {{config['HYVOR_TALK_WEBSITE']}}; // DO NOT CHANGE THIS
+    var HYVOR_TALK_CONFIG = {
+        url: false,
+        id: '{{page.slug}}'
+    };
+</script>
+<script async type="text/javascript" src="//talk.hyvor.com/web-api/embed"></script>
+{% endif %}
+{%- endmacro %}

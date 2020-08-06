@@ -35,15 +35,11 @@
         </div>
 
         <div class="row">
+            {% for post in latest_posts %}
             <div class="col-md-4">
-                {{blog_card(posts[0])}}
+                {{blog_card(post)}}
             </div>
-            <div class="col-md-4">
-                {{blog_card(posts[1])}}
-            </div>
-            <div class="col-md-4">
-                {{blog_card(posts[2])}}
-            </div>
+            {% endfor %}
         </div>
 
         <div class="row" style="padding-top:3em">
@@ -53,24 +49,18 @@
         </div>
 
         <div class="row">
+            {% for post in popular_posts %}
             <div class="col-md-4">
-                {{blog_card(posts[0])}}
+                {{blog_card(post)}}
             </div>
-            <div class="col-md-4">
-                {{blog_card(posts[1])}}
-            </div>
-            <div class="col-md-4">
-                {{blog_card(posts[2])}}
-            </div>
+            {% endfor %}
         </div>
 
         <div class="row justify-content-md-center" style="padding-top:3em; padding-bottom: 3m">
             <div class="col-md-2">
-                <div class="card">
                     <strong class="text-center">
                         <a href="{{url_for('blog.index')}}">More</a>
                     </strong>
-                </div>
             </div>
         </div>
 {% endblock content %}

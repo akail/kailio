@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
+
 import os
+import pathlib
+
 from dotenv import load_dotenv, find_dotenv
 
-basedir = os.path.abspath(os.path.dirname(__file__))
+basedir = pathlib.Path(os.path.abspath(os.path.dirname(__file__)))
 load_dotenv(find_dotenv())
 
 TEMPLATES_AUTO_RELOAD = os.getenv("TEMPLATES_AUTO_RELOAD")
@@ -16,7 +19,16 @@ SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
 
 # Flask Security Settings
 SECURITY_REGISTERABLE = False
-SECURITY_CHANGEABLE = True
+ECURITY_CHANGEABLE = True
 SECURITY_RECOVERABLE = True
 SECURITY_CONFIRMABLE = True
 SECURITY_PASSWORD_SALT = os.getenv("SECURITY_PASSWORD_SALT")
+
+# flask uploads
+UPLOADED_IMAGES_DEST = basedir/'static/images'
+UPLOADED_IMAGES_URL = '/static/images/'
+
+# my settings
+POSTS_PER_PAGE = 10
+
+HYVOR_TALK_WEBSITE = 1513
