@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import render_template, request
+from flask import current_app, render_template, request
 from webargs import fields
 from webargs.flaskparser import use_args
 
@@ -13,10 +13,12 @@ from kailio.model import Post
 @use_args({"page": fields.Integer(missing=0)}, location='query')
 def index(args):
     """"""
-    print(args)
-    latest_posts = Post.query.order_by(Post.published_at.desc()).limit(5).all()
+    page = args['page']
 
-    return render_template("blog/index.html", posts=latest_posts)
+    pagination = Post.query.order_by(Post.published_at.desc()).\
+        paginate(page, current_app.config['POSTS_PER_PAGE'], False)
+
+    return render_template("blog/index.html", pagination=pagination)
 
 
 @blog.route("/<post_name>")

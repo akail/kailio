@@ -29,6 +29,6 @@ UPLOADED_IMAGES_DEST = basedir/'static/images'
 UPLOADED_IMAGES_URL = '/static/images/'
 
 # my settings
-POSTS_PER_PAGE = 10
+POSTS_PER_PAGE = 5
 
 HYVOR_TALK_WEBSITE = 1513
