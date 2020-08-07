@@ -48,7 +48,7 @@ def register_admin_pages(app):
     class ImageView(ModelView):
 
         column_list = [
-            'image', 'name', 'filename', 'size'
+            'image', 'name', 'filename', 'size', 'url'
         ]
 
         column_formatters = {
