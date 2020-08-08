@@ -7,5 +7,9 @@
     or you need to config the CKEditor textarea, use the line below to register the configuration.
     The name value should be the name of the CKEditor form field, it defaults to "text" in Flask-Admin.
     #}
-    {{ ckeditor.config(name='text') }}
+    {{ ckeditor.config(name='content') }}
+    <script>
+        // Enable local "codesnippet" plugin from /ckeditor/static/standard/plugins/codesnippet/ path.
+        CKEDITOR.plugins.addExternal( 'codesnippet', '/static/js/ckeditor-code-snippet/', 'plugin.js' );
+    </script>
 {% endblock %}
