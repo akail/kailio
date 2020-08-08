@@ -6,17 +6,21 @@ from webargs.flaskparser import use_args
 
 from kailio import db
 from kailio.blog import blog
-from kailio.model import Post
+from kailio.model import Post, Tag
 
 
 @blog.route("/")
-@use_args({"page": fields.Integer(missing=0)}, location='query')
+@use_args({"page": fields.Integer(missing=0), 'tag': fields.Str(required=False)}, location='query')
 def index(args):
     """"""
     page = args['page']
 
-    pagination = Post.query.order_by(Post.published_at.desc()).\
-        paginate(page, current_app.config['POSTS_PER_PAGE'], False)
+    query = Post.query.order_by(Post.published_at.desc())
+
+    if 'tag' in args:
+        query = query.filter(Post.tags.any(Tag.name == args['tag']))
+
+    pagination = query.paginate(page, current_app.config['POSTS_PER_PAGE'], False)
 
     return render_template("blog/index.html", pagination=pagination)
 
