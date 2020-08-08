@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from 'macros.html' import prof_exp_header %}
+{% from 'macros.html' import prof_exp_header, resume_skills, resume_education %}
 
 {%block banner_content %}
 Resume
@@ -14,23 +14,28 @@ h2 {
     padding-top: 1rem;
 }
 </style>
+
 <div class="row">
     <div class="col-md-12">
         <h2>Professional Experience</h2>
-        {{prof_exp_header('Data in Science Technologies',
-        'HPC Advisory Scientific Engineer',
-        'June 2020',
-        'Present',
-        None,
-        'Aiken, SC'
+        {{prof_exp_header(
+            'Data in Science Technologies',
+            'HPC Advisory Scientific Engineer',
+            'June 2020',
+            'Present',
+            None,
+            'Aiken, SC'
         )}}
+        <ul>
+        </ul>
 
-        {{prof_exp_header('Savannah River National Laboratory',
-        'Senior Scientist',
-        'Dec 2013',
-        'June 2020',
-        'Integrated Computing',
-        'Aiken, SC'
+        {{prof_exp_header(
+            'Savannah River National Laboratory',
+            'Senior Scientist',
+            'Dec 2013',
+            'June 2020',
+            'Integrated Computing',
+            'Aiken, SC'
         )}}
 
         <ul>
@@ -57,85 +62,33 @@ h2 {
         </ul>
 
         <h2>Education</h2>
+        {{resume_education(
+            "Doctor of Philosophy in Computer and Information Science",
+            "Current",
+            "University of Arkansas Little Rock, Little Rock, AR"
+        )}}
 
-        <div class="row justify-content-between education-row">
-            <div class="col-md-6">
-                <h3>Doctor of Philosophy in Information Science</h3>
-            </div>
-            <div class="col-md-4">
-                <p class="right-date">Current</p>
-            </div>
-        </div>
-        <p>University of Arkansas Little Rock, Little Rock, AR</p>
+        {{resume_education(
+            "Master of Science in Aerospace Engineering",
+            "Aug 2013",
+            "University of Tennessee	Knoxville, TN"
+        )}}
 
-        <div class="row justify-content-between education-row">
-            <div class="col-md-6">
-                <h3>Master of Science in Aerospace Engineering</h3>
-            </div>
-            <div class="col-md-4">
-                <p class="right-date">Aug 2013</p>
-            </div>
-        </div>
-        <p>University of Tennessee	Knoxville, TN</p>
-
-        <div class="row justify-content-between education-row">
-            <div class="col-md-6">
-                <h3>Bachelor of Science in Aerospace Engineering</h3>
-            </div>
-            <div class="col-md-4">
-                <p class="right-date">May 2011</p>
-            </div>
-        </div>
-        <p>University of Tennessee	Knoxville, TN</p>
+        {{resume_education(
+            "Bachelor of Science in Aerospace Engineering",
+            "May 2011",
+            "University of Tennessee	Knoxville, TN"
+        )}}
 
         <h2>Technical Competencies</h2>
 
-        <div class="row">
-            <div class="col-md-12">
-                <p><b>Languages:</b>
-                Python, Bash, Javascript, C/C++, Fortran</p>
-            </div>
-        </div>
+        {{resume_skills('Languages', 'Python, Bash, Javascript, C/C++, Fortran')}} 
 
-        <div class="row">
-            <div class="col-md-12">
-                <p><b>Operating Systems:</b>
-                Red Hat Enterprise Linux, Debian Linux, Arch Linux
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <p><b>Technologies:</b>
-                Machine Learning, Docker, Saltstack
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <p><b>Applications:</b>
-                PostgreSQL, MySQL, Git, Apache, Mercurial, MOAB, Subversion, Nginx<paste>
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <p><b>Methodologies:</b>
-                Numerical Analysis, Finite Element Analysis
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <p><b>Certifications:</b>
-                Applied Data Science with Python
-                </p>
-            </div>
-        </div>
+        {{resume_skills('Operating Systems',' Red Hat Enterprise Linux, Debian Linux, Arch Linux')}}
+        {{resume_skills('Technologies',' Machine Learning, Docker, Podman, Saltstack, Ansible')}}
+        {{resume_skills('Applications',' PostgreSQL, MySQL, Git, Apache, Slurm, Easy Build, Zabbix, Mercurial, MOAB, Subversion, Nginx')}}
+        {{resume_skills('Methodologies',' Numerical Analysis, Finite Element Analysis')}}
+        {{resume_skills('Certifications',' Applied Data Science with Python')}}
 
 
         <h2>Publications</h2>
@@ -159,6 +112,7 @@ h2 {
         <ul>
             <li>Ministry Leader of events at Aiken Church of Christ</li>
             <li>Lead Counselor, Camp Sweet Life</li>
+            <li>South Carolina Academy of Sciences Website
         </ul>
     </div>
 </div>

@@ -10,24 +10,20 @@
 {%- endmacro %}
 
 {% macro blog_summary(post) -%}
-    <div class="blog-post card">
-        <div class="card-body">
-            <h2 class="blog-post-title">{{post.title}}</h2>
-            <p class="blog-post-meta">{{moment(post.published_at).format('MMMM Do, YYYY')}} by
-            <a href="#">{{post.author.first_name}}</a>
-            {% if post.tags %}
-            Tags:
-                {% for tag in post.tags %}
-                    <a href="#" class="badge badge-secondary">{{tag}}</a>
-                {% endfor %}
-            {% endif %}
-            </p>
-            <p class="card-text">{{post.summary}}</p>
-            <a href="{{url_for('blog.post', post_name=post.slug)}}" class="card-link">More..</a>
-
-        </div>
+    <div class="blog-post">
+        <h2 class="blog-post-title">{{post.title}}</h2>
+        <p class="blog-post-meta">{{moment(post.published_at).format('MMMM Do, YYYY')}} by
+        <a href="#">{{post.author.first_name}}</a>
+        {% if post.tags %}
+        Tags:
+            {% for tag in post.tags %}
+                <a href="#" class="badge badge-secondary">{{tag}}</a>
+            {% endfor %}
+        {% endif %}
+        </p>
+        <p class="card-text">{{post.summary}}</p>
+        <a href="{{url_for('blog.post', post_name=post.slug)}}" class="card-link">More..</a>
     </div>
-
 {%- endmacro %}
 
 {% macro prof_exp_header(company, title, start, end, group, location ) -%}
@@ -56,4 +52,37 @@
 </script>
 <script async type="text/javascript" src="//talk.hyvor.com/web-api/embed"></script>
 {% endif %}
+{%- endmacro %}
+
+{%- macro resume_skills(title, items) %}
+<div class="row">
+    <div class="col-md-12">
+        <p><b>{{title}}:</b>
+        {{items}}
+        </p>
+    </div>
+</div>
+{%- endmacro %}
+
+{%- macro portfolio_entry(name, link, description) %}
+<div class="row">
+    <h3><a href="{{link}}">{{name}}</a></h3>
+</div>
+<div class="row">
+    <p class="lead">
+    {{description}}
+    </p>
+</div>
+{%- endmacro %}
+
+{%- macro resume_education(degree, date, location) %}
+<div class="row justify-content-between education-row">
+    <div class="col-md-10">
+        <h3>{{degree}}</h3>
+    </div>
+    <div class="col-md-2">
+        <p class="right-date">{{date}}</p>
+    </div>
+</div>
+<p>{{location}}</p>
 {%- endmacro %}

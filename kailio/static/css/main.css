@@ -59,5 +59,9 @@ hr.style14 {
     position: relative;
     margin-top: -15px;
     background: white;
-    padding: 6rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    width: 1000px;
 }
