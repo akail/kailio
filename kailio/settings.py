@@ -3,10 +3,7 @@
 import os
 import pathlib
 
-from dotenv import load_dotenv, find_dotenv
-
 basedir = pathlib.Path(os.path.abspath(os.path.dirname(__file__)))
-load_dotenv(find_dotenv())
 
 TEMPLATES_AUTO_RELOAD = os.getenv("TEMPLATES_AUTO_RELOAD")
 

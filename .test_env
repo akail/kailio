@@ -1,0 +1,4 @@
+SQLALCHEMY_DATABASE_URI='sqlite:///:memory:'
+SECRET_KEY='some_key'
+TEMPLATES_AUTO_RELOAD=True
+SECURITY_PASSWORD_SALT='testsalt'

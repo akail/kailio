@@ -2,7 +2,10 @@
 __version__ = "0.1.0"
 
 import os
+from pathlib import Path
 
+
+from dotenv import load_dotenv, find_dotenv
 from flask import Flask
 from flask_admin import Admin
 from flask_bootstrap import Bootstrap
@@ -24,8 +27,13 @@ moment = Moment()
 images = UploadSet('images', IMAGES)
 
 
-def create_app():
+def create_app(env_file=None):
     """Application Factory."""
+
+    if env_file:
+        load_dotenv(dotenv_path=Path(env_file))
+    else:
+        load_dotenv(find_dotenv())
 
     app = Flask(__name__)
     app.config.from_object("kailio.settings")
