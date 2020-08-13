@@ -10,9 +10,11 @@ from kailio.model import Page, Post
 def index():
     """"""
 
-    latest_posts = Post.query.order_by(Post.published_at.desc()).limit(3).all()
-    popular_posts = Post.query.order_by(Post.hits.desc()).limit(3).all()
-    return render_template("index.html", latest_posts=latest_posts, popular_posts=popular_posts)
+    latest_post = Post.query.order_by(Post.published_at.desc()).first()
+    popular_post = Post.query.order_by(Post.hits.desc()).first()
+    return render_template(
+        "index.html", latest_post=latest_post, popular_post=popular_post
+    )
 
 
 @main.route("/resume")
