@@ -22,8 +22,8 @@ SECURITY_CONFIRMABLE = True
 SECURITY_PASSWORD_SALT = os.getenv("SECURITY_PASSWORD_SALT")
 
 # flask uploads
-UPLOADED_IMAGES_DEST = basedir/'static/images'
-UPLOADED_IMAGES_URL = '/static/images/'
+UPLOADED_IMAGES_DEST = basedir / "static/uploads/images"
+UPLOADED_IMAGES_URL = "/static/uploads/images/"
 
 # my settings
 POSTS_PER_PAGE = 5
@@ -32,5 +32,5 @@ HYVOR_TALK_WEBSITE = 1513
 
 # CKEDITOR
 CKEDITOR_ENABLE_CODESNIPPET = True
-CKEDITOR_CODE_THEME = 'zenburn'
+CKEDITOR_CODE_THEME = "zenburn"
 CKEDITOR_SERVER_LOCAL = False
