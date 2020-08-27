@@ -18,7 +18,8 @@
         <link rel="stylesheet" href="/static/css/navbar.css"/>
         <link rel="stylesheet" href="/static/css/banner.css"/>
         <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        {#<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">#}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
         <link rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css">
         <link rel="stylesheet" href="/static/css/highlight/gruvbox-dark.css">
@@ -31,11 +32,10 @@
 
 {% set icon_links = [
     ('https://github.com/akail', 'github'),
-    ('https://gitlab.com/akail', 'gitlab'),
     ('https://twitter.com/doubleakail', 'twitter'),
-    ('https://bitbucket.org/akail', 'bitbucket'),
     ('https://linkedin.com/in/andrewkail', 'linkedin'),
     ('https://orcid.org/0000-0002-2243-2600', 'orcid'),
+    ('https://git.kail.io/akail', 'gitea')
     ]
 -%}
 
@@ -50,7 +50,7 @@
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item"><a class="nav-link" href="{{url_for('blog.index')}}">Blog</a></li>
-                  <li class="nav-item"><a class="nav-link" href="{{url_for('main.resume')}}">Resume</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{{url_for('main.cv')}}">CV</a></li>
                   <li class="nav-item"><a class="nav-link" href="{{url_for('main.portfolio')}}">Portfolio</a></li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
@@ -59,11 +59,11 @@
                         {% if iname == 'orcid' %}
                         <a href="{{ihref}}"><i class="icon-link ai ai-{{ iname }} ai-2x"></i></a>
                         {% else %}
-                        <a href="{{ihref}}"><i class="icon-link fab fa-{{ iname }} fa-2x"></i></a>
+                        <a href="{{ihref}}"><i class="icon-link fa fa-{{ iname }} fa-2x"></i></a>
                         {% endif %}
                         {% endfor %}
                         {% if current_user.is_authenticated %}
-                            <a href="{{url_for('security.logout')}}"><i class="icon-link fas fa-sign-out-alt fa-2x"></i></a>
+                            <a href="{{url_for('security.logout')}}"><i class="icon-link fa fa-sign-out fa-2x"></i></a>
                         {% endif %}
                     </li>
                 </ul>
