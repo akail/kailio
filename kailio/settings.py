@@ -24,6 +24,8 @@ SECURITY_PASSWORD_SALT = os.getenv("SECURITY_PASSWORD_SALT")
 # flask uploads
 UPLOADED_IMAGES_DEST = basedir / "static/uploads/images"
 UPLOADED_IMAGES_URL = "/static/uploads/images/"
+UPLOADED_ALL_DEST = basedir / "static/uploads/files"
+UPLOADED_ALL_URL = "/static/uploads/files/"
 
 # my settings
 POSTS_PER_PAGE = 5

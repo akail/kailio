@@ -5,7 +5,7 @@ import os
 from flask_security import RoleMixin, UserMixin
 from sqlalchemy import event
 
-from kailio import db, images
+from kailio import db, images, files
 
 roles_users = db.Table(
     "roles_users",
@@ -96,7 +96,7 @@ class Tag(db.Model):
 
 
 class Image(db.Model):
-    __tablename__ = 'images'
+    __tablename__ = "images"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True, nullable=False)
     filename = db.Column(db.String(128), unique=True)
@@ -114,11 +114,38 @@ class Image(db.Model):
             return
         return images.path(self.filename)
 
-    from sqlalchemy import event
 
-
-@event.listens_for(Image, 'after_delete')
+@event.listens_for(Image, "after_delete")
 def del_image(mapper, connection, target):
+    if target.filepath is not None:
+        try:
+            os.remove(target.filepath)
+        except OSError:
+            pass
+
+
+class File(db.Model):
+    __tablename__ = "files"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True, nullable=False)
+    filename = db.Column(db.String(128), unique=True)
+
+    def __repr__(self):
+        return self.name
+
+    @property
+    def url(self):
+        return files.url(self.filename)
+
+    @property
+    def filepath(self):
+        if self.filename is None:
+            return
+        return files.path(self.filename)
+
+
+@event.listens_for(File, "after_delete")
+def del_file(mapper, connection, target):
     if target.filepath is not None:
         try:
             os.remove(target.filepath)

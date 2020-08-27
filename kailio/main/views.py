@@ -17,10 +17,10 @@ def index():
     )
 
 
-@main.route("/resume")
-def resume():
+@main.route("/cv")
+def cv():
     """"""
-    return render_template("resume.html")
+    return render_template("cv.html")
 
 
 @main.route("/contact")
