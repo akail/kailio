@@ -1,35 +1,28 @@
 version: '2'
-
-volumes:
-  postgres_data: {}
-  env: {}
-
 services:
   app:
-    build: .
+    image: aakail11/kailio:latest
     volumes:
       - ./:/app
+      - ./uploads:/app/kailio/static/uploads
     working_dir: /app
     ports:
       - "127.0.0.1:5000:5000"
     depends_on:
       - db
-      #- redis
-    # uncomment for debugging the service - container does not try to start dev server
-    #entrypoint: ["sh", "-c", "sleep infinity"]
     command: run --reload
+    environment:
+      - FLASK_DEBUG=True
+      - TEMPLATES_AUTO_RELOAD=True
+      - SQLALCHEMY_DATABASE_URI=postgresql://kailio:testing@db/kailio
+      - SECRET_KEY=alskdfasdfna
+      - SECURITY_PASSWORD_SALT=mysalttest
   db:
-    #https://hub.docker.com/_/postgres/
     image: postgres:12
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: kailio
       POSTGRES_PASSWORD: testing
-    #ports: #make db accessible locally
-      #- "127.0.0.1:5432:5432"
-  #redis:
-    ##https://hub.docker.com/_/redis/
-    #image: redis:3.2.9
-    #ports: #make redis accessible locally
-      #- "127.0.0.1:6379:6379"
+    networks:
+      - databases
