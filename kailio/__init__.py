@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 __version__ = "0.1.0"
 
+import datetime
 from pathlib import Path
 
 
@@ -9,6 +10,7 @@ from flask import Flask
 from flask_admin import Admin
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
+from flask_mail import Mail
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_security import Security, SQLAlchemyUserDatastore
@@ -22,6 +24,7 @@ security = Security()
 migrate = Migrate()
 admin = Admin(name="kailio", template_mode="bootstrap3")
 ckeditor = CKEditor()
+mail = Mail()
 moment = Moment()
 images = UploadSet("images", IMAGES)
 files = UploadSet("all", ALL)
@@ -45,6 +48,7 @@ def create_app(env_file=None):
     moment.init_app(app)
     configure_uploads(app, (images, files))
     patch_request_class(app, 16 * 1024 * 1024)
+    mail.init_app(app)
 
     from kailio.model import User, Role
 
@@ -75,12 +79,15 @@ def create_app(env_file=None):
     def create_user():
 
         if not Role.query.filter_by(name="admin").first():
-            db.session.add(Role(name="admin", description="Admin user account"))
+            admin_role = Role(name="admin", description="Admin user account")
+            db.session.add(admin_role)
             db.session.commit()
 
         if not User.query.filter_by(email="andrew@kail.io").first():
             user_datastore.create_user(  # nosec
-                email="andrew@kail.io", password="password"
+                email="andrew@kail.io",
+                password=app.config["ADMIN_PASSWORD"],
+                roles=[admin_role],
             )
 
         db.session.commit()
