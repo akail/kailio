@@ -42,7 +42,9 @@
 
         <div class="row">
             <div class="col-md-12">
-                {{blog_index_summary(latest_post)}}
+              {% if latest_post %}
+              {{blog_index_summary(latest_post)}}
+              {% endif %}
             </div>
         </div>
 
@@ -54,7 +56,9 @@
 
         <div class="row">
             <div class="col-md-12">
+              {% if popular_post %}
                 {{blog_index_summary(popular_post)}}
+              {% endif %}
             </div>
         </div>
 

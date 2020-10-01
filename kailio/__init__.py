@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 __version__ = "0.1.0"
 
-import os
 from pathlib import Path
 
 
@@ -30,7 +29,6 @@ files = UploadSet("all", ALL)
 
 def create_app(env_file=None):
     """Application Factory."""
-
     if env_file:
         load_dotenv(dotenv_path=Path(env_file))
     else:
@@ -80,9 +78,9 @@ def create_app(env_file=None):
             db.session.add(Role(name="admin", description="Admin user account"))
             db.session.commit()
 
-        if not User.query.filter_by(email="akail@kail.io").first():
+        if not User.query.filter_by(email="andrew@kail.io").first():
             user_datastore.create_user(  # nosec
-                email="akail@kail.io", password="password"
+                email="andrew@kail.io", password="password"
             )
 
         db.session.commit()
