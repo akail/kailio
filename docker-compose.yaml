@@ -1,7 +1,7 @@
 version: '2'
 services:
   app:
-    image: aakail11/kailio:latest
+    image: aakail11/kailio:dev
     volumes:
       - ./:/app
       - ./uploads:/app/kailio/static/uploads
@@ -17,10 +17,8 @@ services:
       - SQLALCHEMY_DATABASE_URI=postgresql://kailio:testing@db/kailio
       - SECRET_KEY=alskdfasdfna
       - SECURITY_PASSWORD_SALT=mysalttest
-      - MAIL_SERVER=mail.privateemail.com
       - MAIL_PORT=465
-      - MAIL_USE_TLS=False
-      - MAIL_USE_SSL=False
+      - MAIL_SERVER=mail.privateemail.com
       - MAIL_USERNAME=andrew@kail.io
       - MAIL_PASSWORD=KL#29ndrwk
   db:
